@@ -27,10 +27,7 @@
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     header {
       position: sticky;
@@ -57,27 +54,9 @@
       font-weight: 600;
     }
 
-    .logo span {
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      font-size: 0.7rem;
-      margin-left: 10px;
-      color: var(--accent-dark);
-    }
+    .nav-links { display: flex; gap: 18px; font-size: 0.9rem; letter-spacing: 0.16em; text-transform: uppercase; }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 4px;
-    }
+    .nav-links a { position: relative; padding-bottom: 4px; }
 
     .nav-links a::after {
       content: "";
@@ -87,489 +66,82 @@
       width: 0;
       height: 1px;
       background: var(--accent-dark);
-      transition: width 0.2s ease;
+      transition: width 0.2s;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover::after { width: 100%; }
 
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 20px 60px;
-    }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 32px;
-      align-items: center;
-      padding: 28px 0 40px;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.3rem, 4vw, 3rem);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .hero-text p {
-      color: var(--muted);
-      max-width: 480px;
-      font-size: 0.98rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-
-    .hero-tags span {
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 4px 10px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      background: var(--accent-dark);
-      color: #fff;
-      border: none;
-      border-radius: 999px;
-      padding: 9px 18px;
-      font-size: 0.9rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background: #8a6b46;
-    }
-
-    .hero-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .hero-image {
-      border-radius: 18px;
-      background: radial-gradient(circle at top left, #ffffff, #e7e1d8);
-      padding: 12px;
-      position: relative;
-      overflow: hidden;
-      min-height: 220px;
-    }
-
-    .hero-image-inner {
-      border-radius: 14px;
-      background-image: linear-gradient(135deg, #bfa27a 0%, #f5f4f1 40%, #cab9a1 100%);
-      height: 100%;
-      position: relative;
-    }
-
-    .hero-overlay-card {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      background: rgba(245, 244, 241, 0.92);
-      padding: 10px 12px;
-      border-radius: 12px;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      font-size: 0.74rem;
-    }
-
-    .hero-overlay-card strong {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.7rem;
-      margin-bottom: 2px;
-    }
-
-    /* Sections */
-    section {
-      margin-top: 32px;
-    }
+    section { margin-top: 32px; }
 
     section h2 {
       font-size: 1rem;
-      text-transform: uppercase;
       letter-spacing: 0.18em;
+      text-transform: uppercase;
       margin-bottom: 4px;
     }
 
-    section p.section-intro {
+    .section-intro {
+      color: var(--muted);
       font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
       margin-bottom: 16px;
+      max-width: 520px;
     }
 
-    /* Collection cards */
-    .grid {
+    /* --- GALLERY --- */
+    .gallery-grid {
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
-    @media (min-width: 768px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      .grid-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media(min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 767px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-image {
-        order: -1;
-      }
-      .nav-links {
-        display: none;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      padding: 14px 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .card-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .card-title {
-      font-size: 0.98rem;
-      margin-bottom: 6px;
-    }
-
-    .card-copy {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .card-tagline {
-      font-size: 0.8rem;
-      color: var(--accent-dark);
-    }
-
-    /* Fabric palette */
-    .fabric-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .fabric-swatch {
-      flex: 1;
-      height: 56px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .fabric-1 { background: #f3ede6; }
-    .fabric-2 { background: #d5c6b3; }
-    .fabric-3 { background: #b9a28a; }
-    .fabric-4 { background: #8a6b46; }
-
-    /* Craft section */
-    .craft-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 8px;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    /* Contact section */
-    .contact-layout {
-      display: grid;
-      gap: 18px;
-    }
-
-    @media (min-width: 768px) {
-      .contact-layout {
-        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      }
-    }
-
-    form {
-      display: grid;
-      gap: 10px;
-    }
-
-    label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    input, textarea {
+    .gallery-grid img {
       width: 100%;
-      padding: 7px 9px;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      font: inherit;
-      background: rgba(255, 255, 255, 0.9);
+      border-radius: 14px;
+      display: block;
+      object-fit: cover;
     }
 
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .contact-note {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    footer {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px 20px 28px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 6px;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-    }
   </style>
 </head>
+
 <body>
-  <header>
-    <nav class="nav">
-      <div class="logo">
-        SHENG SHOP
-        <span>Upholstery Studio</span>
-      </div>
-      <div class="nav-links">
-        <a href="#collection">Collection</a>
-        <a href="#fabric">Fabric</a>
-        <a href="#craft">Craft</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
+<header>
+  <nav class="nav">
+    <div class="logo">SHENG SHOP</div>
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#fabric">Fabric</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="hero-text">
-        <h1>Headboards, sofas and fabric with quiet luxury</h1>
-        <p>
-          Sheng Shop works with tailored upholstery for headboards, sofas, settees and made to measure fabric pieces. 
-          Calm tones, simple lines and comfortable seating for bedrooms and living rooms.
-        </p>
-        <div class="hero-tags">
-          <span>Headboards</span>
-          <span>Sofas</span>
-          <span>Settees</span>
-          <span>Fabric wall panels</span>
-        </div>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-            Book a viewing
-          </button>
-          <span class="hero-note">By appointment only</span>
-        </div>
-      </div>
+<main>
 
-      <div class="hero-image" aria-hidden="true">
-        <div class="hero-image-inner"></div>
-        <div class="hero-overlay-card">
-          <strong>Custom pieces</strong>
-          Headboards, sofas, benches and fabric panels in one studio.
-        </div>
-      </div>
-    </section>
+  <!-- GALLERY SECTION -->
+  <section id="gallery">
+    <h2>Inspiration</h2>
+    <p class="section-intro">Recent headboard and upholstery references that guide the style of Sheng Shop pieces.</p>
 
-    <!-- Collection -->
-    <section id="collection">
-      <h2>Collection</h2>
-      <p class="section-intro">
-        A focused set of core pieces for homes, show units and boutique spaces.
-      </p>
+    <div class="gallery-grid">
+      <img src="img/headboard1.jpeg" alt="Upholstered headboard reference 1">
+      <img src="img/headboard2.jpeg" alt="Upholstered headboard reference 2">
+    </div>
+  </section>
 
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-label">Headboards</div>
-          <div class="card-title">Upholstered headboards</div>
-          <p class="card-copy">
-            Full height, half height or framed panels. Clean details, hidden fixings and comfortable back support.
-          </p>
-          <div class="card-tagline">Queen, king and custom sizes</div>
-        </article>
+</main>
 
-        <article class="card">
-          <div class="card-label">Seating</div>
-          <div class="card-title">Sofas and settees</div>
-          <p class="card-copy">
-            Deep seats, firm cushions and fabric that feels good to sit on. Built for daily use in compact apartments.
-          </p>
-          <div class="card-tagline">Three seater, L shape and bay window seating</div>
-        </article>
+<footer style="max-width:1100px;margin:0 auto;padding:20px;font-size:0.78rem;color:var(--muted);border-top:1px solid rgba(0,0,0,0.05);">
+  © Sheng Shop · Upholstery studio
+</footer>
 
-        <article class="card">
-          <div class="card-label">Fabric details</div>
-          <div class="card-title">Walls, panels and benches</div>
-          <p class="card-copy">
-            Fabric wall panels, window seats and entry benches that soften hard spaces and reduce echo.
-          </p>
-          <div class="card-tagline">Made to fit your carpentry layout</div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Fabric palette -->
-    <section id="fabric">
-      <h2>Fabric library</h2>
-      <p class="section-intro">
-        Neutrals, textured weaves and stain resistant options picked for Singapore homes with warm light and high humidity.
-      </p>
-
-      <article class="card">
-        <div class="card-label">Tone</div>
-        <div class="card-title">Warm neutral palette</div>
-        <p class="card-copy">
-          From soft ivory to nutmeg brown, these tones sit well with light wood floors, stone tiles and built in wardrobes.
-        </p>
-
-        <div class="fabric-row">
-          <div class="fabric-swatch fabric-1" title="Soft ivory"></div>
-          <div class="fabric-swatch fabric-2" title="Mushroom beige"></div>
-          <div class="fabric-swatch fabric-3" title="Camel"></div>
-          <div class="fabric-swatch fabric-4" title="Dark cognac"></div>
-        </div>
-      </article>
-
-      <div class="grid grid-2" style="margin-top: 14px;">
-        <article class="card">
-          <div class="card-label">Comfort</div>
-          <div class="card-title">Soft to touch</div>
-          <p class="card-copy">
-            We pick fabrics that feel gentle on skin and still keep good structure for cushions and vertical panels.
-          </p>
-          <div class="card-tagline">Velvets, boucle and woven blends</div>
-        </article>
-
-        <article class="card">
-          <div class="card-label">Care</div>
-          <div class="card-title">Practical for daily use</div>
-          <p class="card-copy">
-            Options with stain guard and removable covers are available for families with children, pets and guests.
-          </p>
-          <div class="card-tagline">Swatches can be viewed in studio</div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Craft section -->
-    <section id="craft">
-      <h2>Craft</h2>
-      <p class="section-intro">
-        Each piece is shaped by hand in a small workshop, with frames, foam and fabric planned as one.
-      </p>
-
-      <article class="card">
-        <div class="card-label">Process</div>
-        <div class="card-title">How Sheng Shop works</div>
-
-        <div class="craft-list">
-          <div>
-            <strong>1. Layout and sizing</strong><br />
-            Share room photos, plans and measurements so we can propose headboard width, sofa depth and seating heights.
-          </div>
-          <div>
-            <strong>2. Frame and comfort</strong><br />
-            We tune the frame, foam density and cushion profile to fit how you like to read, watch shows or host guests.
-          </div>
-          <div>
-            <strong>3. Fabric selection</strong><br />
-            Touch and see fabric in person. We mark out wall colors, flooring and carpentry tones when deciding.
-          </div>
-          <div>
-            <strong>4. Delivery and installation</strong><br />
-            Our team brings in the headboard, sofa or settee, protects your flooring and handles simple alignment on site.
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p class="section-intro">
-        Share a short brief and we will reply with suggested headboard or sofa sizes, fabric direction and a meeting slot.
-      </p>
-
-      <div class="contact-layout">
-        <article class="card">
-          <form>
-            <div>
-              <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Your name" />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" />
-            </div>
-            <div>
-              <label for="project">Project type</label>
-              <input id="project" type="text" placeholder="Headboard / Sofa / Settee / Fabric panels" />
-            </div>
-            <div>
-              <label for="message">Room details</label>
-              <textarea id="message" placeholder="Room size, photos link, preferred timing for viewing"></textarea>
-            </div>
-            <button type="submit" class="btn-primary">Send enquiry</button>
-          </form>
-        </article>
-
-        <div>
-          <p class="contact-note">
-            Studio by appointment, weekday evenings and selected weekends.<br /><br />
-            Phone: +65 0000 0000<br />
-            Email: hello@shengshop.example<br /><br />
-            Please allow one to two working days for a reply.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© Sheng Shop. Upholstery studio.</span>
-    <span>Custom headboards, sofas, settees and fabric panels.</span>
-  </footer>
 </body>
 </html>
