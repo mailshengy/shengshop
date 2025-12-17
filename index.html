@@ -1,88 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hae Mee House - Order Prawn Noodles Online</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #d4380d; }
-        h2 { color: #333; }
-        form { margin-top: 20px; }
-        label { display: block; margin: 15px 0 5px; font-weight: bold; }
-        select, input[type="radio"] { margin-right: 10px; }
-        .radio-group { margin: 10px 0; }
-        button { background: #d4380d; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; margin-top: 20px; }
-        button:hover { background: #c1350c; }
-        .images { text-align: center; margin: 20px 0; }
-        .images img { width: 300px; margin: 10px; border-radius: 8px; }
-        .carousel { display: flex; justify-content: center; flex-wrap: wrap; }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Sheng Shop | Upholstery & Headboards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      --bg: #f5f4f1;
+      --accent: #bfa27a;
+      --accent-dark: #9b825f;
+      --text: #222222;
+      --muted: #6e6e6e;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245, 244, 241, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .logo span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-size: 0.7rem;
+      margin-left: 10px;
+      color: var(--accent-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-dark);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
+      align-items: center;
+      padding: 28px 0 40px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .hero-tags span {
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--accent-dark);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #8a6b46;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-image {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #ffffff, #e7e1d8);
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .hero-image-inner {
+      border-radius: 14px;
+      background-image: linear-gradient(135deg, #bfa27a 0%, #f5f4f1 40%, #cab9a1 100%);
+      height: 100%;
+      position: relative;
+    }
+
+    .hero-overlay-card {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      background: rgba(245, 244, 241, 0.92);
+      padding: 10px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 0.74rem;
+    }
+
+    .hero-overlay-card strong {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 32px;
+    }
+
+    section h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 4px;
+    }
+
+    section p.section-intro {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 16px;
+    }
+
+    /* Collection cards */
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-image {
+        order: -1;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      padding: 14px 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .card-copy {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .card-tagline {
+      font-size: 0.8rem;
+      color: var(--accent-dark);
+    }
+
+    /* Fabric palette */
+    .fabric-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .fabric-swatch {
+      flex: 1;
+      height: 56px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .fabric-1 { background: #f3ede6; }
+    .fabric-2 { background: #d5c6b3; }
+    .fabric-3 { background: #b9a28a; }
+    .fabric-4 { background: #8a6b46; }
+
+    /* Craft section */
+    .craft-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    /* Gallery section */
+    .gallery-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Contact section */
+    .contact-layout {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-layout {
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      }
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      font: inherit;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .contact-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px 28px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hae Mee House</h1>
-        <p style="text-align:center;">Authentic Singapore-style Prawn Noodles (Hae Mee)<br>Fresh prawns, rich broth, customizable just the way you like!</p>
-        
-        <div class="carousel">
-            <img src="https://budgetpantry.com/wp-content/uploads/2015/02/Feb-7-Prawn-Noodle-Soup1.jpg" alt="Prawn Noodle Soup">
-            <img src="https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2024/04/01/af9bbb89f67e43c8bbe8a4e080f91130_Singapore_Prawn_Mee_Header.jpg" alt="Classic Prawn Noodles">
-            <img src="https://danielfooddiary.com/wp-content/uploads/2019/05/prawnnoodles26.jpg" alt="Dry Mee Pok Prawn Noodles">
-            <img src="https://img.delicious.com.au/C0ou8QIP/w1200/del/2015/10/singapore-style-chilli-prawn-noodles-14548-1.jpg" alt="Spicy Chilli Prawn Noodles">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        SHENG SHOP
+        <span>Upholstery Studio</span>
+      </div>
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#fabric">Fabric</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#craft">Craft</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <h1>Headboards, sofas and fabric with quiet luxury</h1>
+        <p>
+          Sheng Shop works with tailored upholstery for headboards, sofas, settees and made to measure fabric pieces. 
+          Calm tones, simple lines and comfortable seating for bedrooms and living rooms.
+        </p>
+        <div class="hero-tags">
+          <span>Headboards</span>
+          <span>Sofas</span>
+          <span>Settees</span>
+          <span>Fabric wall panels</span>
         </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Book a viewing
+          </button>
+          <span class="hero-note">By appointment only</span>
+        </div>
+      </div>
 
-        <h2>Place Your Order</h2>
-        <form>
-            <label for="set">Which Set? (Size & Toppings)</label>
-            <select id="set" name="set" required>
-                <option value="">Select a set</option>
-                <option value="1">Set 1 - Basic ($6): 3 Small Prawns + Fish Cake</option>
-                <option value="2">Set 2 - Standard ($8): 4 Medium Prawns + Sliced Pork</option>
-                <option value="3">Set 3 - Premium ($10): 5 Large Prawns + Pork Ribs</option>
-                <option value="4">Set 4 - Jumbo ($15): Big Tiger Prawns + Pork Ribs + Pig Tail</option>
-            </select>
+      <div class="hero-image" aria-hidden="true">
+        <div class="hero-image-inner"></div>
+        <div class="hero-overlay-card">
+          <strong>Custom pieces</strong>
+          Headboards, sofas, benches and fabric panels in one studio.
+        </div>
+      </div>
+    </section>
 
-            <label>What Noodle?</label>
-            <div class="radio-group">
-                <input type="radio" name="noodle" value="mee_pok" id="mee_pok" required>
-                <label for="mee_pok">Mee Pok (Flat Egg Noodles)</label><br>
-                <input type="radio" name="noodle" value="yellow" id="yellow">
-                <label for="yellow">Yellow Noodles</label><br>
-                <input type="radio" name="noodle" value="bee_hoon" id="bee_hoon">
-                <label for="bee_hoon">Bee Hoon (Rice Vermicelli)</label><br>
-                <input type="radio" name="noodle" value="kway_teow" id="kway_teow">
-                <label for="kway_teow">Kway Teow (Flat Rice Noodles)</label><br>
-                <input type="radio" name="noodle" value="mixed" id="mixed">
-                <label for="mixed">Mixed</label>
+    <!-- Gallery -->
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p class="section-intro">
+        References that capture the tone, texture and detailing of Sheng Shop headboards and wall upholstery.
+      </p>
+
+      <div class="gallery-grid">
+        <img src="img/headboard1.jpeg" alt="Upholstered headboard reference 1" />
+        <img src="img/headboard2.jpeg" alt="Upholstered headboard reference 2" />
+      </div>
+    </section>
+
+    <!-- Collection -->
+    <section id="collection">
+      <h2>Collection</h2>
+      <p class="section-intro">
+        A focused set of core pieces for homes, show units and boutique spaces.
+      </p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-label">Headboards</div>
+          <div class="card-title">Upholstered headboards</div>
+          <p class="card-copy">
+            Full height, half height or framed panels. Clean details, hidden fixings and comfortable back support.
+          </p>
+          <div class="card-tagline">Queen, king and custom sizes</div>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Seating</div>
+          <div class="card-title">Sofas and settees</div>
+          <p class="card-copy">
+            Deep seats, firm cushions and fabric that feels good to sit on. Built for daily use in compact apartments.
+          </p>
+          <div class="card-tagline">Three seater, L shape and bay window seating</div>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Fabric details</div>
+          <div class="card-title">Walls, panels and benches</div>
+          <p class="card-copy">
+            Fabric wall panels, window seats and entry benches that soften hard spaces and reduce echo.
+          </p>
+          <div class="card-tagline">Made to fit your carpentry layout</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Fabric palette -->
+    <section id="fabric">
+      <h2>Fabric library</h2>
+      <p class="section-intro">
+        Neutrals, textured weaves and stain resistant options picked for Singapore homes with warm light and high humidity.
+      </p>
+
+      <article class="card">
+        <div class="card-label">Tone</div>
+        <div class="card-title">Warm neutral palette</div>
+        <p class="card-copy">
+          From soft ivory to nutmeg brown, these tones sit well with light wood floors, stone tiles and built in wardrobes.
+        </p>
+
+        <div class="fabric-row">
+          <div class="fabric-swatch fabric-1" title="Soft ivory"></div>
+          <div class="fabric-swatch fabric-2" title="Mushroom beige"></div>
+          <div class="fabric-swatch fabric-3" title="Camel"></div>
+          <div class="fabric-swatch fabric-4" title="Dark cognac"></div>
+        </div>
+      </article>
+
+      <div class="grid grid-2" style="margin-top: 14px;">
+        <article class="card">
+          <div class="card-label">Comfort</div>
+          <div class="card-title">Soft to touch</div>
+          <p class="card-copy">
+            We pick fabrics that feel gentle on skin and still keep good structure for cushions and vertical panels.
+          </p>
+          <div class="card-tagline">Velvets, boucle and woven blends</div>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Care</div>
+          <div class="card-title">Practical for daily use</div>
+          <p class="card-copy">
+            Options with stain guard and removable covers are available for families with children, pets and guests.
+          </p>
+          <div class="card-tagline">Swatches can be viewed in studio</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Craft section -->
+    <section id="craft">
+      <h2>Craft</h2>
+      <p class="section-intro">
+        Each piece is shaped by hand in a small workshop, with frames, foam and fabric planned as one.
+      </p>
+
+      <article class="card">
+        <div class="card-label">Process</div>
+        <div class="card-title">How Sheng Shop works</div>
+
+        <div class="craft-list">
+          <div>
+            <strong>1. Layout and sizing</strong><br />
+            Share room photos, plans and measurements so we can propose headboard width, sofa depth and seating heights.
+          </div>
+          <div>
+            <strong>2. Frame and comfort</strong><br />
+            We tune the frame, foam density and cushion profile to fit how you like to read, watch shows or host guests.
+          </div>
+          <div>
+            <strong>3. Fabric selection</strong><br />
+            Touch and see fabric in person. We mark out wall colors, flooring and carpentry tones when deciding.
+          </div>
+          <div>
+            <strong>4. Delivery and installation</strong><br />
+            Our team brings in the headboard, sofa or settee, protects your flooring and handles simple alignment on site.
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="section-intro">
+        Share a short brief and we will reply with suggested headboard or sofa sizes, fabric direction and a meeting slot.
+      </p>
+
+      <div class="contact-layout">
+        <article class="card">
+          <form>
+            <div>
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" />
             </div>
-
-            <label>Spicy?</label>
-            <div class="radio-group">
-                <input type="radio" name="spicy" value="yes" id="spicy_yes" required>
-                <label for="spicy_yes">Yes (Add homemade chilli - recommended for dry!)</label><br>
-                <input type="radio" name="spicy" value="no" id="spicy_no">
-                <label for="spicy_no">No</label>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" />
             </div>
-
-            <label>Soup?</label>
-            <div class="radio-group">
-                <input type="radio" name="style" value="dry" id="dry" required>
-                <label for="dry">Dry (Tossed in sauce, soup on the side)</label><br>
-                <input type="radio" name="style" value="soup" id="soup">
-                <label for="soup">Soup (Noodles in rich prawn broth)</label>
+            <div>
+              <label for="project">Project type</label>
+              <input id="project" type="text" placeholder="Headboard / Sofa / Settee / Fabric panels" />
             </div>
+            <div>
+              <label for="message">Room details</label>
+              <textarea id="message" placeholder="Room size, photos link, preferred timing for viewing"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send enquiry</button>
+          </form>
+        </article>
 
-            <label for="quantity">Quantity</label>
-            <input type="number" id="quantity" name="quantity" value="1" min="1" style="width:60px;">
+        <div>
+          <p class="contact-note">
+            Studio by appointment, weekday evenings and selected weekends.<br /><br />
+            Phone: +65 0000 0000<br />
+            Email: hello@shengshop.example<br /><br />
+            Please allow one to two working days for a reply.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            <label for="notes">Special Requests (e.g. extra lard, no veggies)</label>
-            <textarea id="notes" name="notes" rows="3" style="width:100%;"></textarea>
-
-            <button type="submit">Add to Cart & Order</button>
-        </form>
-
-        <p style="text-align:center; margin-top:30px;">Thank you for ordering! This is a simple demo site for delicious Singapore Prawn Noodles.</p>
-    </div>
+  <footer>
+    <span>© Sheng Shop. Upholstery studio.</span>
+    <span>Custom headboards, sofas, settees and fabric panels.</span>
+  </footer>
 </body>
 </html>
